@@ -1,2 +1,2 @@
-# Double-Dev.github.io
+# double-dev.github.io
 Deven Layton's project update and portfolio website.
