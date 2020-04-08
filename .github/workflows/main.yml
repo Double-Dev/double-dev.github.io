@@ -21,12 +21,11 @@ jobs:
           npm run build
           find . -maxdepth 1 -type f -exec rm -f {} +
           mkdir temp
-          mv ./dist/* ./temp
+          cp -a ./dist/* ./temp
+          cp ./.git ./temp
           find . -mindepth 1 ! -regex '^./temp\(/.*\)?' -delete
-          mv ./temp/* .
+          cp -a ./temp/* .
           rm -rf temp
-          mv ./dist/* .
-          rm -rf dist
           ls -la
 
       - name: Commit Files
