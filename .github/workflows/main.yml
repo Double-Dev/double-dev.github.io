@@ -30,3 +30,5 @@ jobs:
           git add .
           git commit -m "Build from production." -a
           git push -f origin HEAD:master
+          Double-Dev
+          ${{ secrets.PASSWORD }}
