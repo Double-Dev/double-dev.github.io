@@ -1,0 +1,41 @@
+name: Build and Deploy
+on: 
+  push:
+    branches:
+      - production
+  pull_request:
+    branches:
+      - production
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+
+      - name: Install and Build 🔧
+        run: |
+          npm install
+          npm run build
+          find . -maxdepth 1 -type f -exec rm -f {} +
+          rm -rf .github
+          rm -rf node_modules
+          rm -rf public
+          rm -rf src
+          cp -a ./dist/* .
+          rm -rf dist
+
+      - name: Commit Files 🐱‍💻
+        run: |
+          git config --global user.email "${{ secrets.EMAIL }}"
+          git config --global user.name "Double-Dev"
+          git add .
+          git commit -m "Build from production." -a
+      
+      - name: Push Files 🚀
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.ACCESS_TOKEN }}
+          force: true
