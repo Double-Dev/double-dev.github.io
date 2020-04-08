@@ -24,9 +24,3 @@ jobs:
           ls
       #    cp -a ./build/* .
       #    find . -maxdepth 1 -type d -exec rm -rf {} +
-      
-      - name: Deploy 🚀
-      #   run: |
-      #     git add .
-      #     git commit -m "Build from production." -a
-      #     git push -f origin master
