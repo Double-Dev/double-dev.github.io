@@ -20,7 +20,7 @@ jobs:
           npm install
           npm run build
           find . -maxdepth 1 -type f -exec rm -f {} +
-          find . -mindepth 1 ! -regex '^\.\/(dist|\.git)(\/.*)' | cat
+          find . -mindepth 1 ! -regex '^\.\/(dist|\.git)(\/.*)'
           ls -la
           ls -la
           cp -a ./dist/* .
