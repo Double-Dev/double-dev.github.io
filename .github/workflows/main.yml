@@ -20,9 +20,10 @@ jobs:
           npm install
           npm run build
           find . -maxdepth 1 -type f -exec rm -f {} +
-          find . -mindepth 1 ! -regex '^\.\/(dist|\.git)(\/.*)'
-          ls -la
-          ls -la
+          rm -rf .github
+          rm -rf node_modules
+          rm -rf public
+          rm -rf src
           cp -a ./dist/* .
           rm -rf dist
 
