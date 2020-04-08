@@ -20,7 +20,11 @@ jobs:
           npm install
           npm run build
           find . -maxdepth 1 -type f -exec rm -f {} +
-          cp -a ./dist/* .
+          mkdir temp
+          mv -a ./dist/* ./temp
+          find . -mindepth 1 ! -regex '^./temp\(/.*\)?' -delete
+          mv -a ./temp/* .
+          mv -a ./dist/* .
           rm -rf dist
           ls -la
 
