@@ -29,4 +29,4 @@ jobs:
           git config --global user.name "Double-Dev"
           git add .
           git commit -m "Build from production." -a
-          git push -f origin master
+          git push -f origin HEAD:master
