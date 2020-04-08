@@ -23,7 +23,7 @@ jobs:
           find . -mindepth 1 ! -regex '^./dist\(/.*\)?' -delete
           cp -a ./dist/* .
           rm -rf dist
-          cd
+          ls
           pwd
 
       - name: Commit Files
