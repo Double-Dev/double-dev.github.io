@@ -20,7 +20,6 @@ jobs:
           npm install
           npm run build
           find . -maxdepth 1 -type f -exec rm -f {} +
-      #    find . -mindepth 1 ! -regex '^./dist\(/.*\)?' -delete
           cp -a ./dist/* .
           rm -rf dist
           ls -la
