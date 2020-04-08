@@ -22,13 +22,16 @@ jobs:
           find . -maxdepth 1 -type f -exec rm -f {} +
           cp -a ./dist/* .
           rm -rf */
-      
-      - name: Deploy 🚀
+
+      - name: Commit Files
         run: |
           git config --global user.email "${{ secrets.EMAIL }}"
           git config --global user.name "Double-Dev"
           git add .
           git commit -m "Build from production." -a
-          git push -f origin HEAD:master
-          Double-Dev
-          ${{ secrets.PASSWORD }}
+      
+      - name: Push Files 🚀
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.ACCESS_TOKEN }}
+          
