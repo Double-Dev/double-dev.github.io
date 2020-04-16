@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="w3-display-container" style="max-width: 1600;">
     <!-- Sidebar -->
-    <nav id="nav" class="w3-display-left w3-display-container w3-sidebar w3-collapse w3-theme-l3 w3-animate-left" style="z-index: 3;width: 200px;">
+    <nav id="nav" class="w3-display-left w3-display-container w3-sidebar w3-collapse w3-theme-l4 w3-animate-left" style="z-index: 3;width: 200px;">
       <a class="w3-display-topright text-button w3-hide-large w3-xlarge w3-theme" style="background-color: inherit!important" v-on:click="closeNav()">
         <i class="fa fa-remove"/>
       </a>
@@ -15,8 +15,10 @@
     <div id="nav-overlay" class="w3-overlay w3-hide-large w3-animate-opacity" v-on:click="closeNav()"/>
     <span class="w3-display-topleft w3-button w3-hide-large w3-xlarge w3-theme" v-on:click="openNav()"><i class="fa fa-bars"/></span>
     <!-- Header -->
-    <div class="w3-display-top w3-padding w3-theme">
-      <h3 class="no-margin">Placeholder</h3>
+    <div class="w3-display-top w3-theme">
+      <router-link to="/">
+        <h3 class="text-button no-margin">Placeholder</h3>
+      </router-link>
     </div>
     <!-- Content -->
     <br>
