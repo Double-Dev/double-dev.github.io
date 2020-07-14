@@ -1,28 +1,48 @@
 <template>
-  <div id="app" class="w3-display-container" style="max-width: 1600;">
-    <!-- Sidebar -->
-    <nav id="nav" class="w3-display-left w3-display-container w3-sidebar w3-collapse w3-theme-l4 w3-animate-left" style="z-index: 3;width: 200px;">
-      <a class="w3-display-topright text-button w3-hide-large w3-xlarge w3-theme" style="background-color: inherit!important" v-on:click="closeNav()">
-        <i class="fa fa-remove"/>
-      </a>
-      <br>
-      <div class="w3-container">
-        
-        <router-link to="/">Home</router-link> |
-        <router-link to="/about">About</router-link>
-      </div>
-    </nav>
-    <div id="nav-overlay" class="w3-overlay w3-hide-large w3-animate-opacity" v-on:click="closeNav()"/>
-    <span class="w3-display-topleft w3-button w3-hide-large w3-xlarge w3-theme" v-on:click="openNav()"><i class="fa fa-bars"/></span>
-    <!-- Header -->
-    <div class="w3-display-top w3-theme">
-      <router-link to="/">
-        <h3 class="text-button no-margin">Placeholder</h3>
+  <div id="app" class="w3-display-container app" style="max-width: 1600;">
+    <!-- Navigation Bar -->
+    <nav id="nav" class="w3-bar nav-display theme">
+      <!-- Logo -->
+      <router-link to="/" class="w3-bar-item logo">
+        <img src="./assets/logo.png">
       </router-link>
-    </div>
+      <!-- Navgation Links -->
+      <div>
+        <router-link to="/" class="w3-bar-item nav-item w3-hide-small">Home</router-link>
+        <router-link to="/about" class="w3-bar-item nav-item w3-hide-small">About</router-link>
+        <div class="w3-dropdown-hover nav-item nav-end w3-hide-small">
+          <button class="w3-button">Dropdown</button>
+          <div class="w3-dropdown-content w3-bar-block">
+            <router-link to="/about" class="w3-bar-item w3-button">About Link 1</router-link>
+            <router-link to="/about" class="w3-bar-item w3-button">About Link 2</router-link>
+          </div>
+        </div>
+      </div>
+      <!-- Mobile Navigation Button -->
+      <a class="w3-bar-item w3-button w3-hide-large w3-hide-medium" v-on:click="toggleNav()">
+        <i class="fa fa-bars"/>
+      </a>
+    </nav>
+    <!-- Mobile Extension of Navigation Bar -->
+    <nav id="mobile-nav" class="w3-bar-block theme w3-hide w3-hide-large w3-hide-medium">
+      <router-link to="/" class="w3-bar-item w3-button">Home</router-link>
+      <router-link to="/about" class="w3-bar-item w3-button">About</router-link>
+      <div class="w3-dropdown-hover">
+          <button class="w3-button">Dropdown</button>
+          <div class="w3-dropdown-content w3-bar-block theme-l1">
+            <router-link to="/about" class="w3-bar-item w3-button">About Link 1</router-link>
+            <router-link to="/about" class="w3-bar-item w3-button">About Link 2</router-link>
+          </div>
+        </div>
+    </nav>
     <!-- Content -->
-    <br>
-    <router-view class="w3-main" style="margin-left: 200px;"/>
+    <router-view class="content"/>
+    <!-- Footer -->
+    <footer class="theme-l1">
+      <div class="theme"><br></div>
+        <h3>Footer Content Goes Here</h3>
+        <a href="https://github.com/Double-Dev"><i class="fa fa-github w3-hover-opacity"/></a>
+    </footer>
   </div>
 </template>
 
@@ -31,34 +51,54 @@ import { Component, Vue } from 'vue-property-decorator';
 
 @Component
 export default class App extends Vue {
-  private nav: HTMLElement | null = null;
-  private overlay: HTMLElement | null = null;
-
-  public openNav() {
-    if (this.nav == null) {
-      this.nav = <HTMLElement>document.getElementById('nav');
+  public toggleNav() {
+    const mobileNav = document.getElementById('mobile-nav') as HTMLElement;
+    if (!mobileNav.classList.contains('w3-show')) {
+      mobileNav.classList.add('w3-show');
+    } else {
+      mobileNav.classList.remove('w3-show');
     }
-    this.nav.style.display = 'block';
-    if (this.overlay == null) {
-      this.overlay = <HTMLElement>document.getElementById('nav-overlay');
-    }
-    this.overlay.style.display = 'block';
-  }
-
-  public closeNav() {
-    if (this.nav == null) {
-      this.nav = <HTMLElement>document.getElementById('nav');
-    }
-    this.nav.style.display = 'none';
-    if (this.overlay == null) {
-      this.overlay = <HTMLElement>document.getElementById('nav-overlay');
-    }
-    this.overlay.style.display = 'none';
   }
 }
 </script>
 
+<style scoped>
+.logo {
+  margin-right: auto !important;
+}
+
+.logo img {
+  width: 35px;
+  height: 35px;
+}
+
+.nav-display {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.nav-item {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.nav-end {
+  margin-right: 20px;
+}
+
+.content {
+  min-height: 100%;
+}
+</style>
+
 <style>
+html, body, #app {
+  height: 100%;
+  min-height: 100%;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -67,16 +107,11 @@ export default class App extends Vue {
   color: #2c3e50;
 }
 
-#nav {
-  padding: 30px;
-}
-
-#nav a {
+nav a {
   font-weight: bold;
-  color: #000;
 }
 
-#nav a.router-link-exact-active {
+nav a.router-link-exact-active {
   color: #42b983;
 }
 
@@ -86,22 +121,5 @@ export default class App extends Vue {
 
 .no-margin {
   margin: 0% !important;
-}
-
-.text-button {
-  border: none;
-  display: inline-block;
-  padding: 8px 16px;
-  vertical-align: middle;
-  overflow: hidden;
-  text-decoration: none;
-  color: inherit;
-  text-align: center;
-  cursor: pointer;
-  white-space: nowrap;
-}
-
-.text-button:hover {
-  color: #000 !important;
 }
 </style>
