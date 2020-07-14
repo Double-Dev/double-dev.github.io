@@ -1,11 +1,6 @@
 <template>
   <div class="home">
-    <HelloWorld msg="Welcome to Your Home Page"/>
-    <HelloWorld msg="Welcome to Your Home Page"/>
-    <HelloWorld msg="Welcome to Your Home Page"/>
-    <HelloWorld msg="Welcome to Your Home Page"/>
-    <HelloWorld msg="Welcome to Your Home Page"/>
-    <HelloWorld msg="Welcome to Your Home Page"/>
+    <HelloWorld msg="This page is a work in progress."/>
   </div>
 </template>
 

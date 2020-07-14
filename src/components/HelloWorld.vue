@@ -2,7 +2,7 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <p>
-      Home page goes here.
+      Check back later for updates.
     </p>
   </div>
 </template>
