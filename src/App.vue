@@ -1,28 +1,19 @@
 <template>
   <div id="app" class="w3-display-container" style="max-width: 1600;">
-    <!-- Sidebar -->
-    <nav id="nav" class="w3-display-left w3-display-container w3-sidebar w3-collapse w3-theme-l4 w3-animate-left" style="z-index: 3;width: 200px;">
-      <a class="w3-display-topright text-button w3-hide-large w3-xlarge w3-theme" style="background-color: inherit!important" v-on:click="closeNav()">
-        <i class="fa fa-remove"/>
-      </a>
-      <br>
-      <div class="w3-container">
-        
-        <router-link to="/">Home</router-link> |
-        <router-link to="/about">About</router-link>
-      </div>
+    <!-- Navigation Bar -->
+    <nav id="nav" class="w3-bar theme">
+        <router-link to="/" class="w3-bar-item w3-button logo">
+          <img src="./assets/logo.png">
+        </router-link>
+        <router-link to="/" class="w3-bar-item w3-button">Home</router-link>
+        <router-link to="/about" class="w3-bar-item w3-button">About</router-link>
+        <a class="w3-bar-item w3-button w3-right text-button w3-hide-large w3-hide-medium" v-on:click="openNav()">
+          <i class="fa fa-bars"/>
+        </a>
     </nav>
-    <div id="nav-overlay" class="w3-overlay w3-hide-large w3-animate-opacity" v-on:click="closeNav()"/>
-    <span class="w3-display-topleft w3-button w3-hide-large w3-xlarge w3-theme" v-on:click="openNav()"><i class="fa fa-bars"/></span>
-    <!-- Header -->
-    <div class="w3-display-top w3-theme">
-      <router-link to="/">
-        <h3 class="text-button no-margin">Placeholder</h3>
-      </router-link>
-    </div>
     <!-- Content -->
     <br>
-    <router-view class="w3-main" style="margin-left: 200px;"/>
+    <router-view class="w3-main"/>
   </div>
 </template>
 
@@ -36,22 +27,22 @@ export default class App extends Vue {
 
   public openNav() {
     if (this.nav == null) {
-      this.nav = <HTMLElement>document.getElementById('nav');
+      this.nav = document.getElementById('nav') as HTMLElement;
     }
     this.nav.style.display = 'block';
     if (this.overlay == null) {
-      this.overlay = <HTMLElement>document.getElementById('nav-overlay');
+      this.overlay = document.getElementById('nav-overlay') as HTMLElement;
     }
     this.overlay.style.display = 'block';
   }
 
   public closeNav() {
     if (this.nav == null) {
-      this.nav = <HTMLElement>document.getElementById('nav');
+      this.nav = document.getElementById('nav') as HTMLElement;
     }
     this.nav.style.display = 'none';
     if (this.overlay == null) {
-      this.overlay = <HTMLElement>document.getElementById('nav-overlay');
+      this.overlay = document.getElementById('nav-overlay') as HTMLElement;
     }
     this.overlay.style.display = 'none';
   }
@@ -67,13 +58,8 @@ export default class App extends Vue {
   color: #2c3e50;
 }
 
-#nav {
-  padding: 30px;
-}
-
 #nav a {
   font-weight: bold;
-  color: #000;
 }
 
 #nav a.router-link-exact-active {
