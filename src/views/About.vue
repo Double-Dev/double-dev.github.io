@@ -1,7 +1,9 @@
 <template>
-  <div class="about content-padding">
-    <h1>This is an about page</h1>
-    <HelloWorld msg="This page is a work in progress."/>
+  <div class="about">
+    <div class="screen-height vertical-center-flex">
+      <h1>This is an about page</h1>
+      <HelloWorld msg="This page is a work in progress."/>
+    </div>
   </div>
 </template>
 

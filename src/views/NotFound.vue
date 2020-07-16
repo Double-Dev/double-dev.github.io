@@ -1,7 +1,9 @@
 <template>
-  <div class="notfound content-padding">
-    <h1>404 - Not Found</h1>
-    <p>We're sorry, but the page that you requested doesn't seem to exist.</p>
+  <div class="notfound">
+    <div class="screen-height vertical-center-flex">
+      <h1>404 - Not Found</h1>
+      <p>We're sorry, but the page that you requested doesn't seem to exist.</p>
+    </div>
   </div>
 </template>
 

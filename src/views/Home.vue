@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <header class="theme-1 banner">
-      <span class="w3-center w3-padding-large w3-xlarge w3-wide theme">
+    <header class="header vertical-center-flex">
+      <span class="w3-xlarge w3-padding-large theme w3-opacity-min w3-wide">
         Logo Goes Here
       </span>
     </header>
@@ -43,6 +43,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import { solidNav, transparentNav } from '@/App.vue';
 import HelloWorld from '@/components/HelloWorld.vue';
 
 @Component({
@@ -59,35 +60,23 @@ export default class Home extends Vue {
   public styleNav() {
     const nav = document.getElementById('nav') as HTMLElement;
     if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-      nav.classList.add('w3-card');
-      nav.classList.add('w3-animate-top');
-      nav.classList.add('theme');
+      solidNav();
     } else {
-      nav.classList.remove('w3-card');
-      nav.classList.remove('w3-animate-top');
-      nav.classList.remove('theme');
+      transparentNav();
     }
   }
 
   public destroyed() {
     document.removeEventListener('scroll', this.styleNav);
-    const nav = document.getElementById('nav') as HTMLElement;
-    nav.classList.add('w3-card');
-    nav.classList.add('w3-animate-top');
-    nav.classList.add('theme');
+    solidNav();
   }
 }
 </script>
 
 <style scoped>
-.banner {
-  height: 50vh;
-  min-height: 50vh;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.header {
+  height: 100vh;
+  min-height: 100vh;
 
   background-position: center;
   background-attachment: fixed;
