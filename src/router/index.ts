@@ -13,7 +13,7 @@ const routes = [
   },
   {
     path: '/content',
-    name: 'Home',
+    name: 'Content',
     component: () => import(/* webpackChunkName: "about" */ '../views/templates/BannerContent.vue'),
   },
   {

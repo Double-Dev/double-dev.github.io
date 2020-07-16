@@ -5,6 +5,7 @@
 .text-accent-theme {color:#fff !important}
 .content-theme {color:#000 !important; background-color:#f0f0f0 !important}
 .text-content-theme {color:#000 !important}
+.text-subtle-theme {color:#666 !important}
 
 /* Themes for mouse hover.*/
 .hover-theme:hover {color:#000 !important; background-color:#000 !important}

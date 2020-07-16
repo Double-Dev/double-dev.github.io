@@ -4,8 +4,8 @@
     <div class="w3-top text-theme">
       <nav id="nav" class="w3-bar nav-display theme w3-card w3-animate-top" style="z-index: 3;">
         <!-- Logo -->
-        <router-link to="/" class="w3-bar-item logo">
-          <img src="./assets/logo.png">
+        <router-link to="/" class="w3-bar-item nav-logo">
+          <img src="./assets/logo.png">Double-Dev
         </router-link>
         <!-- Navgation Links -->
         <div>
@@ -33,8 +33,20 @@
     <footer class="accent-theme">
       <div class="theme"><br></div>
       <div class="footer-display">
-        <h3>Footer Content Goes Here</h3>
-        <a href="https://github.com/Double-Dev"><i class="fa fa-github w3-large w3-hover-opacity"/></a>
+        <div>
+          <a class="theme w3-button" v-on:click="scrollToTop()"><i class="fa fa-arrow-up"/> To the top</a>
+          <br>
+          <br>
+          <span>
+            <a href="https://github.com/Double-Dev"><i class="fa fa-github w3-xlarge w3-hover-opacity"/></a>
+            <!-- <a href=""><i class="fa fa-youtube w3-xlarge w3-hover-opacity"/></a> -->
+          </span>
+          <br>
+          <p class="text-subtle-theme">Developed by Deven Layton</p>
+        </div>
+        <div>
+          <img src="./assets/logo.png" class="footer-logo w3-right">
+        </div>
       </div>
     </footer>
   </div>
@@ -52,6 +64,10 @@ export default class App extends Vue {
     } else {
       mobileNav.classList.remove('w3-show');
     }
+  }
+
+  public scrollToTop() {
+    window.scrollTo(0, 0);
   }
 }
 
@@ -93,12 +109,11 @@ export function transparentNav() {
   margin-right: 10px;
 }
 
-.logo {
+.nav-logo {
   margin-right: auto !important;
 }
 
-.logo img {
-  width: 6vh;
+.nav-logo img {
   height: 6vh;
 }
 
@@ -112,9 +127,21 @@ nav a.router-link-exact-active {
 
 .footer-display {
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
+  padding: 25px;
+}
+
+.footer-display p {
+  white-space: nowrap;
+}
+
+.footer-display a {
+  padding: 10px;
+}
+
+.footer-logo {
+  height: 100px;
 }
 </style>
 
