@@ -1,13 +1,11 @@
 <template>
-  <div class="home">
-    <header class="theme-1 banner vertical-center-flex">
-      <span class="w3-center w3-padding-large w3-xlarge w3-wide theme">
-        Logo Goes Here
-      </span>
+  <div class="project">
+    <header class="banner">
+      <router-view name="banner"></router-view>
     </header>
     <div class="content-padding">
-      <HelloWorld msg="This page is a work in progress."/>
       <!-- Content goes here. -->
+      <router-view name="content"></router-view>
     </div>
   </div>
 </template>
@@ -17,7 +15,7 @@ import { Component, Vue } from 'vue-property-decorator';
 import { solidNav, transparentNav } from '@/App.vue';
 
 @Component
-export default class ContentBanner extends Vue {
+export default class Project extends Vue {
   public mounted() {
     document.addEventListener('scroll', this.styleNav);
     this.styleNav();
@@ -38,15 +36,14 @@ export default class ContentBanner extends Vue {
 }
 </script>
 
-<style scoped>
+<style>
 .banner {
   height: 50vh;
   min-height: 50vh;
-
+  
   background-position: center;
   background-attachment: fixed;
   background-size: cover;
-  background-image: url('https://www.w3schools.com/w3images/nature.jpg'); /* Temporary image for testing. */
   background-repeat: no-repeat;
 }
 </style>

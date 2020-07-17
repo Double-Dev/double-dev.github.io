@@ -5,7 +5,7 @@
       <nav id="nav" class="w3-bar nav-display theme w3-card w3-animate-top" style="z-index: 3;">
         <!-- Logo -->
         <router-link to="/" class="w3-bar-item nav-logo">
-          <img src="./assets/logo.png">Double-Dev
+          <img src="@/assets/logo.png">Double-Dev.github.io
         </router-link>
         <!-- Navgation Links -->
         <div>
@@ -45,7 +45,7 @@
           <p class="text-subtle-theme">Developed by Deven Layton</p>
         </div>
         <div>
-          <img src="./assets/logo.png" class="footer-logo w3-right">
+          <img src="@/assets/logo.png" class="footer-logo w3-right">
         </div>
       </div>
     </footer>
@@ -100,13 +100,12 @@ export function transparentNav() {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  padding-left: 25px;
-  padding-right: 25px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .nav-item {
-  margin-left: 10px;
-  margin-right: 10px;
+  
 }
 
 .nav-logo {
